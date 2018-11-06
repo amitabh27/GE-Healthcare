@@ -1,0 +1,30 @@
+{
+    "_id": {
+        "$oid": "5be17af05d0e651b7a1d446d"
+    },
+    "twitterid": "amitabhtiwari3",
+    "mediumid": "oldirony",
+    "instagramid": "pandey_amita",
+    "Entities": [
+        {
+            "Text": "Oval,London",
+            "Score": "0.948316216468811",
+            "Type": "LOCATION"
+        },
+        {
+            "Text": "T20 match",
+            "Score": "0.5639323592185974",
+            "Type": "EVENT"
+        },
+        {
+            "Text": "Virat Kohli",
+            "Score": "0.9966773390769958",
+            "Type": "PERSON"
+        },
+        {
+            "Text": "Glenn",
+            "Score": "0.9646704196929932",
+            "Type": "PERSON"
+        }
+    ]
+}

@@ -114,9 +114,9 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 </ul>
 
 
- ![ibm-agg-DB1](https://github.com/amitabh27/hackathon/blob/master/gitRepo%20metadata/ibm-agg1.png)<br>
-    ![ibm-agg-DB2](https://github.com/amitabh27/hackathon/blob/master/gitRepo%20metadata/ibm-agg2.png)<br>
-    ![ibm-agg-DB3](https://github.com/amitabh27/hackathon/blob/master/gitRepo%20metadata/ibm-agg3.png)<br>
+ ![aws-agg-DB1](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec1.png)<br>
+    ![aws-agg-DB2](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec2.png)<br>
+    ![aws-agg-DB3](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec3.png)<br>
     
     
 <br><br>
@@ -183,10 +183,11 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 </ul>
 
 
- ![ibm-ana-DB1](https://github.com/amitabh27/hackathon/blob/master/gitRepo%20metadata/ibm-ana1.png)<br>
-    ![ibm-ana-DB2](https://github.com/amitabh27/hackathon/blob/master/gitRepo%20metadata/ibm-ana2.png)<br>
-    ![ibm-ana-DB3](https://github.com/amitabh27/hackathon/blob/master/gitRepo%20metadata/ibm-ana3.png)<br>
-    ![ibm-ana-DB4](https://github.com/amitabh27/hackathon/blob/master/gitRepo%20metadata/ibm-ana4.png)<br>
+ ![aws-ana-DB1](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-ana1.png)<br>
+    ![aws-ana-DB2](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-ana2.png)<br>
+    ![aws-ana-DB3](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-ana3.png)<br>
+    ![aws-ana-DB4](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-ana4.png)<br>
+    ![aws-ana-DB5](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-ana5.png)<br>
     
   <br><br>
 <h3> Module 3 : aws-recommender </h3>
@@ -214,8 +215,8 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 </ul>
 
 
- ![ibm-rec-DB1](https://github.com/amitabh27/hackathon/blob/master/gitRepo%20metadata/ibm-rec1.png)<br>
- ![ibm-rec-DB2](https://github.com/amitabh27/hackathon/blob/master/gitRepo%20metadata/ibm-rec2.png)<br>
+![aws-rec-DB1](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec1.png)<br>
+![aws-rec-DB2](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec1.png)<br>
 
     
   <br><br>

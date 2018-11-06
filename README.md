@@ -216,7 +216,7 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 
 
 ![aws-rec-DB1](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec1.png)<br>
-![aws-rec-DB2](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec1.png)<br>
+![aws-rec-DB2](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec2.png)<br>
 
     
   <br><br>

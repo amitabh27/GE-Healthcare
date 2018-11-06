@@ -1,0 +1,160 @@
+{
+    "_id": {
+        "$oid": "5be17af11f6e4f224230e3ff"
+    },
+    "twitterid": "amitabhtiwari3",
+    "mediumid": "oldirony",
+    "instagramid": "pandey_amita",
+    "personality_insights": [
+        {
+            "quality": "Openness",
+            "percentile": "0.9623267452932475",
+            "children": [
+                {
+                    "quality": "Adventurousness",
+                    "percentile": "0.7980828931899385"
+                },
+                {
+                    "quality": "Artistic interests",
+                    "percentile": "0.5573692519387418"
+                },
+                {
+                    "quality": "Emotionality",
+                    "percentile": "0.0449599033998071"
+                },
+                {
+                    "quality": "Imagination",
+                    "percentile": "0.7530244446428289"
+                },
+                {
+                    "quality": "Intellect",
+                    "percentile": "0.9977403977597066"
+                },
+                {
+                    "quality": "Authority-challenging",
+                    "percentile": "0.9454095454756933"
+                }
+            ]
+        },
+        {
+            "quality": "Conscientiousness",
+            "percentile": "0.3976425839973219",
+            "children": [
+                {
+                    "quality": "Achievement striving",
+                    "percentile": "0.7207169423180978"
+                },
+                {
+                    "quality": "Cautiousness",
+                    "percentile": "0.7935834370061143"
+                },
+                {
+                    "quality": "Dutifulness",
+                    "percentile": "0.316641925456976"
+                },
+                {
+                    "quality": "Orderliness",
+                    "percentile": "0.29739494283074847"
+                },
+                {
+                    "quality": "Self-discipline",
+                    "percentile": "0.49192081323443093"
+                },
+                {
+                    "quality": "Self-efficacy",
+                    "percentile": "0.6721265393571475"
+                }
+            ]
+        },
+        {
+            "quality": "Extraversion",
+            "percentile": "0.10479164207947467",
+            "children": [
+                {
+                    "quality": "Activity level",
+                    "percentile": "0.9108301748382841"
+                },
+                {
+                    "quality": "Assertiveness",
+                    "percentile": "0.5823549723415367"
+                },
+                {
+                    "quality": "Cheerfulness",
+                    "percentile": "0.0019029137803530105"
+                },
+                {
+                    "quality": "Excitement-seeking",
+                    "percentile": "0.19324725463423947"
+                },
+                {
+                    "quality": "Outgoing",
+                    "percentile": "0.025454665270282895"
+                },
+                {
+                    "quality": "Gregariousness",
+                    "percentile": "0.002144904608659959"
+                }
+            ]
+        },
+        {
+            "quality": "Agreeableness",
+            "percentile": "0.0004359562914312276",
+            "children": [
+                {
+                    "quality": "Altruism",
+                    "percentile": "0.2138063854964779"
+                },
+                {
+                    "quality": "Cooperation",
+                    "percentile": "0.6880730947852165"
+                },
+                {
+                    "quality": "Modesty",
+                    "percentile": "0.1086306309453543"
+                },
+                {
+                    "quality": "Uncompromising",
+                    "percentile": "0.526261200501556"
+                },
+                {
+                    "quality": "Sympathy",
+                    "percentile": "0.5800855174839188"
+                },
+                {
+                    "quality": "Trust",
+                    "percentile": "0.856780988022827"
+                }
+            ]
+        },
+        {
+            "quality": "Emotional range",
+            "percentile": "0.8317617993648324",
+            "children": [
+                {
+                    "quality": "Fiery",
+                    "percentile": "0.6215326898137303"
+                },
+                {
+                    "quality": "Prone to worry",
+                    "percentile": "0.29203294984020123"
+                },
+                {
+                    "quality": "Melancholy",
+                    "percentile": "0.8238024250285066"
+                },
+                {
+                    "quality": "Immoderation",
+                    "percentile": "0.05330840580730467"
+                },
+                {
+                    "quality": "Self-consciousness",
+                    "percentile": "0.9528164007398988"
+                },
+                {
+                    "quality": "Susceptible to stress",
+                    "percentile": "0.5964090642405747"
+                }
+            ]
+        }
+    ]
+}

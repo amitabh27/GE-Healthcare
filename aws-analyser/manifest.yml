@@ -1,0 +1,7 @@
+applications:
+- name: ibm-analyser
+  memory: 128M
+  disk_quota: 128M
+  host: ibmanalyser
+  buildpack: nodejs_buildpack
+  command: node app.js

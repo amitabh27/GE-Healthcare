@@ -229,7 +229,7 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
     <li> Outcome : 3 responses for videos and songs. User can click on it and he will be redirected to youtube site to play the same.</li>
   </ul>
   
-   <li><h6>ibm-recommender APIs for articles: </h6></li>
+   <li><h6>aws-recommender APIs for articles: </h6></li>
   <ul>
     <li> Motivation : To get professional tips on how to deal with certain kind of emotions.</li>
     <li> Outcome : 5 tips are presented on the dashboard.</li>

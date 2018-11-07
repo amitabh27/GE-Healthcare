@@ -1,5 +1,9 @@
 
-PS : The Demo video and Presentation Slides are in Documentation folder.
+PS : 
+1. The Demo video and Presentation Slides are in Documentation folder.
+2. Just download the aws-analyser in your local machine and run "node app.js" to fire it. The Web app will be accessible at "http://localhost:3000/users/analysis?#menu1"
+3. Please Enable the CORS Plugin in your browser before running the web app(Link-https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en)
+
 
 # AWS AI Challenge
 SHADE Engine to detect the emotions of a person based on his/her social media activity and recommend measures to improve upon the same.

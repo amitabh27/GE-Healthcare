@@ -1,4 +1,6 @@
 
+PS : The Demo video and Presentation Slides are in Documentation folder.
+
 # AWS AI Challenge
 SHADE Engine to detect the emotions of a person based on his/her social media activity and recommend measures to improve upon the same.
 

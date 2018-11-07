@@ -10,20 +10,27 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <style>
- 	.btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
- 	.icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
+  .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
+  .icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
 
- 	/*#insert9{
- 	background-image: url("../assets/images/bgimage.png");
- 	}*/
+  /*#insert9{
+  background-image: url("../assets/images/bgimage.png");
+  }*/
 
- 	.wrapper{
+  .wrapper{
       display:grid;
       /* grid-template-columns:1fr 1fr 1fr;*/
       grid-template-columns:1fr;
       grid-gap:1em;
       /* grid-auto-rows:100px; */
       grid-auto-rows: minmax(100px, auto);
+    }
+   
+    .mp3 > div {
+      background:#EAF0F1;
+      padding:1em;
+      border:#333 1px solid;
+      padding-left: 250px;
     }
 
     .wrapper > div{
@@ -93,57 +100,57 @@
     }
 
     #insert8{
-    	overflow-y: auto;
-	height: 500px;
+      overflow-y: auto;
+  height: 500px;
     }
     .container{
-    	width:220px;
-    	height:40px;
+      width:220px;
+      height:40px;
     }
 
     /*body
     {
-    	background-image: url("bgimage.png");
+      background-image: url("bgimage.png");
     }*/
 
     .page-header {
     font-size: 20px;
     color: #EAF0F1;
 }
-	#search{
-	border-style: ridge;
-	}
+  #search{
+  border-style: ridge;
+  }
 
-	body{
-  	font-family: 'Ubuntu', serif;
-  	font-size: 14px;
-	}
-	
-	#header{
-	margin: auto;
-	height: 50px;
-    	width: auto;
-    	color:#ffffff;
-    	background-color: #000000;
-    	display: flex;
+  body{
+    font-family: 'Ubuntu', serif;
+    font-size: 14px;
+  }
+  
+  #header{
+  margin: auto;
+  height: 50px;
+      width: auto;
+      color:#ffffff;
+      background-color: #000000;
+      display: flex;
     justify-content: center;
     align-items: center;
-	}
+  }
 
-	#insert10{
-	margin: auto;
-	height: 50px;
-    	width: auto;
-    	color:#ffffff;
-    	background-color: #000000;
-    	display: flex;
+  #insert10{
+  margin: auto;
+  height: 50px;
+      width: auto;
+      color:#ffffff;
+      background-color: #000000;
+      display: flex;
     justify-content: center;
     align-items: center;
-	}
+  }
 
-	.required{
-	color: #45CE30;
-	}
+  .required{
+  color: #45CE30;
+  }
   
   #loader {
   position: absolute;
@@ -199,90 +206,94 @@
 </head>
 <body bgcolor="#25CCF7">
 <div id="header" class="container2"><br>
-    	<h4 id="label" align="center">SHADE ENGINE</h4>      
+      <h4 id="label" align="center">SHADE ENGINE</h4>      
 </div>
 <div class="container1">
   <form action="#menu1" id="search" class="form-inline" onsubmit="demo()">
-	<div class="form-group">
-	<label class="required" for="Twitter ID">Twitter ID:</label>&nbsp;&nbsp;&nbsp;
+  <div class="form-group">
+  <label class="required" for="Twitter ID">Twitter ID:</label>&nbsp;&nbsp;&nbsp;
 <input type="text" style="margin:5px;" class="form-control" placeholder="E.g. amitabhtiwari3" id="tid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          	<label class="required" for="Medium ID">Medium ID:</label>&nbsp;&nbsp;&nbsp;
+            <label class="required" for="Medium ID">Medium ID:</label>&nbsp;&nbsp;&nbsp;
 <input type="text" style="margin:5px;" class="form-control" placeholder="E.g. oldirony" id="mid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          	<label class="required" for="Instagram ID">Instagram ID:</label>&nbsp;&nbsp;&nbsp;
+            <label class="required" for="Instagram ID">Instagram ID:</label>&nbsp;&nbsp;&nbsp;
 <input type="text" style="margin:5px;" class="form-control" placeholder="E.g. amita_pandey" id="iid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<!--<button type="submit"  class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Submit</button>-->
-	<button type="submit" style="margin:5px;" class="btn btn-primary">Submit</button>&nbsp;&nbsp;
-	</div>
-	</form>
-	</div>
-  <div id="loader"></div>
+  <!--<button type="submit"  class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Submit</button>-->
+  <button type="submit" style="margin:5px;" class="btn btn-primary">Submit</button>&nbsp;&nbsp;
+  </div>
+  </form>
+  </div>
+  <div id="loader" style="display:none"></div>
 <div class="mp3">
-	<div id="labelwrapmp3">
-	</div>
+  <div id="shade">
+    <div style="width: 300px; float: left" id="shadelabel">
+      <h3 align="left"><span class = "label label-primary">SHADE Summerizer</span></h3>
+    </div>
+    <div style="margin-left: 350px" id="labelwrapmp3"></div>
+  </div>
 </div>
 <div class="wrapper">
-	<div id="labelwrap">
-	<h4 align="center"><span class = "label label-primary">Personality Insights</span></h4>
-	<div id="insert"></div>
-	</div>
+  <div id="labelwrap">
+  <h4 align="center"><span class = "label label-primary">Personality Insights</span></h4>
+  <div id="insert"></div>
+  </div>
 </div>
 <div class="wrapper1">
-	<div id="labelwrap1">
-	<h4 align="center"><span class = "label label-primary">Feelings from Tweets </span></h4>
-	<div id="insert2"></div><br><br>
-	<textarea rows="2" cols="60" style="text-align:left;" readonly>
+  <div id="labelwrap1">
+  <h4 align="center"><span class = "label label-primary">Feelings from Tweets </span></h4>
+  <div id="insert2"></div><br><br>
+  <textarea rows="2" cols="60" style="text-align:left;" readonly>
 This is the summary level tweet analysis for the last 7 days.
-	</textarea>
-	</div>
-	<div id="labelwrap2">
-	<h4 align="center"><span class = "label label-primary">Datewise Emotions about your Tweets </span></h4>
-	<div id="insert4"></div><br>
-	<textarea rows="2" cols="80" readonly>
+  </textarea>
+  </div>
+  <div id="labelwrap2">
+  <h4 align="center"><span class = "label label-primary">Datewise Emotions about your Tweets </span></h4>
+  <div id="insert4"></div><br>
+  <textarea rows="2" cols="80" readonly>
 Above bar graph shows emotions in percentages derived from your tweets of last 7 days.
-	</textarea>
-	</div>
-	<div id="labelwrap3">
-	<h4 align="center"><span class = "label label-primary">Entities in your Tweets </span></h4>
-	<div id="insert3"></div><br>
-	<textarea rows="3" cols="45" readonly>
+  </textarea>
+  </div>
+  <div id="labelwrap3">
+  <h4 align="center"><span class = "label label-primary">Entities in your Tweets </span></h4>
+  <div id="insert3"></div><br>
+  <textarea rows="3" cols="45" readonly>
 Above donut chart shows various types of entities you are tweeting about including instances of those entities.
-	</textarea>
-	</div>
+  </textarea>
+  </div>
 </div>
 
 <div class="wrapper2">
-	<div id="labelwrap9">
-	<h4 align="center"><span class = "label label-primary">Tips From Recommender </span></h4>
-	<div id="insert9"></div>
-	</div>
-	<div id="labelwrap4">
-	<h4 align="center"><span class = "label label-primary">Emotions thorugh Instagram</span></h4>
-	<div id="insert1"></div><br>
-	<textarea rows="2" cols="80" readonly>
+  <div id="labelwrap9">
+  <h4 align="center"><span class = "label label-primary">Tips From Recommender </span></h4>
+  <div id="insert9"></div>
+  </div>
+  <div id="labelwrap4">
+  <h4 align="center"><span class = "label label-primary">Emotions thorugh Instagram</span></h4>
+  <div id="insert1"></div><br>
+  <textarea rows="2" cols="80" readonly>
 Above pie-chart shows emotions expressed through pictures shared on instagram.
-	</textarea>
-	</div>
-	<div id="labelwrap6">
-	<h4 id="youtube_title" align="center"><span class = "label label-primary">Videos For     </span></h4>
-	<div id="insert6"></div>
-	</div>
+  </textarea>
+  </div>
+  <div id="labelwrap6">
+  <h4 id="youtube_title" align="center"><span class = "label label-primary">Videos For     </span></h4>
+  <div id="insert6"></div>
+  </div>
 </div>
 <div class="wrapper3">
-	<div id="insert8"></div>
-	<div id="nested">
-	<div id="insert5"></div><br><br><br><br>
-	<textarea id="yogatext" rows="6" cols="80" readonly=""></textarea>
-	</div>
-	<div id="labelwrap7">
-	<h4 id="youtube_title11" align="center"><span class = "label label-primary">Songs For     </span></h4>
-	<div id="insert7"></div>
-	</div>
+  <div id="insert8"></div>
+  <div id="nested">
+  <div id="insert5"></div><br><br><br><br>
+  <textarea id="yogatext" rows="6" cols="80" readonly=""></textarea>
+  </div>
+  <div id="labelwrap7">
+  <h4 id="youtube_title11" align="center"><span class = "label label-primary">Songs For     </span></h4>
+  <div id="insert7"></div>
+  </div>
 </div>
 <div class="wrapper4">
-	<div id="insert10">
-	<h4 id="label" align="center">&#169; - Brogrammerss - A SHADE Engine developed by Team Brogrammerss</h4>
-	<!--<input type="text" size="50" value="&#169; - Brogrammers - A SHADE Engine developed by Team Brogrammers" readonly>-->
-	</div>
+  <div id="insert10">
+  <h4 id="label" align="center">&#169; - Brogrammers - A SHADE Engine developed by Team Brogrammers</h4>
+  <!--<input type="text" size="50" value="&#169; - Brogrammers - A SHADE Engine developed by Team Brogrammers" readonly>-->
+  </div>
 </div><br>
 
 <script type="text/javascript">
@@ -300,10 +311,10 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
     var celebrity = "";
     var polly = "";var twittersummary="";var entities="";var keyphrases="";var pi="";var insta="";
 
-    var tips = "I have collected few tips from doctors and psychiatrists to help you with your current emotion";
-    var nearby = "To help you with your mood I am hereby giving nearby places to dine, worship and explore natural beauties";
-    var yoga = "At the bottom there are few yoga positions that you could try";
-    var vs = "On your right I have given you personalized recommendations on youtube funny videos and calming music";
+    var tips = "I have collected few tips from doctors and psychiatrists to help you with your current emotion.";
+    var nearby = "To help you with your mood I am hereby giving nearby places to dine, worship and explore natural beauties.";
+    var yoga = "At the bottom there are few yoga positions that you could try.";
+    var vs = "On your right I have given you personalized recommendations on youtube funny videos and calming music.";
 
     
     var uri1 = "https://api.mlab.com/api/1/databases/awsai/collections/tweets?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK";
@@ -329,7 +340,9 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
     $("#insert8").hide();
     $("#nested").hide();
     $("#labelwrap7").hide();
-    $("#labelwrapmp3").hide();
+    /*$("#shadelabel").hide();
+    $("#labelwrapmp3").hide();*/
+    $("#shade").hide();
 
   });
 
@@ -353,6 +366,7 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
   function demo()
   {
      console.log("demo");
+     $('#loader').show();
      function myFunction()
       {
         myVar = setTimeout(showPage, 15000);
@@ -511,13 +525,13 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
                                                     {
                                                       for(var k=0;k<resk[f].KeyPhrases.length;k++)
                                                       {
-													  
-													    console.log("---->"+resk[f].KeyPhrases[k].Text);
-														
-														if((resk[f].KeyPhrases[k].Text).toString().indexOf("http")==-1)
+    
+      console.log("---->"+resk[f].KeyPhrases[k].Text);
+  
+  if((resk[f].KeyPhrases[k].Text).toString().indexOf("http")==-1)
                                                         keyphrases = keyphrases.concat(resk[f].KeyPhrases[k].Text+",");
-														else
-														console.log("in else");
+  else
+  console.log("in else");
                                                       }
                                                     }
                                                   }
@@ -619,28 +633,17 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
                                                   $("#nested").show();
                                                   yogas();
                                                   $("#labelwrap7").show();
-												  $("#labelwrapmp3").show();
-												  
-												  
-												  polly = polly.concat(twittersummary).concat(pi).concat(entities).concat(keyphrases).concat(insta).concat(tips).
-													  concat(nearby).concat(yoga).concat(vs);
-													  
-												console.log("---->polly="+polly);
-
-												  var xhttp100 = new XMLHttpRequest();
-												  xhttp100.onreadystatechange = function() {
-													  if (this.readyState == 4 && this.status == 200)
-													  {
-														document.getElementById("labelwrapmp3").innerHTML = "<audio controls><source src=\"../assets/speech.mp3\" type=\"audio/mpeg\"></audio>";
-													  }
-													};
-													xhttp100.open("GET","https://aws-analyser.herokuapp.com/users/polly/"+polly, true);
-													xhttp100.send();
-													
-													
-                                                  songs();
+     /*$("#shadelabel").show();          
+    $("#labelwrapmp3").show();*/
+    $("#shade").show();
+    
+    
+  
+  
+                                                 songs();
                                               
 
+    
 
                                           }
                                         };
@@ -698,7 +701,7 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
           arr[j][7] = "";
 
           var k1 = resp[i].personality_insights[j].children[0].percentile;
-          var q = "";
+          var q = resp[i].personality_insights[j].children[0].quality;
 
           for(k=0;k<resp[i].personality_insights[j].children.length;k++)
           {
@@ -721,7 +724,26 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
       }
 
       var temp ="";
-      console.log(meta+"\n");
+      console.log("PI="+pi);
+    
+    //Polly Logic
+    polly = polly.concat(twittersummary).concat(pi).concat(entities).concat(keyphrases).concat(insta).concat(tips).
+    concat(nearby).concat(yoga).concat(vs);
+    
+  console.log("---->polly="+polly);
+
+    var xhttp100 = new XMLHttpRequest();
+    xhttp100.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+    {
+  document.getElementById("labelwrapmp3").innerHTML = "<audio controls><source src=\"../assets/speech.mp3\" type=\"audio/mpeg\"></audio>";
+    }
+  };
+  xhttp100.open("GET","http://localhost:3000/users/polly/"+polly, true);
+  xhttp100.send();
+  
+    
+    
       console.log(len);
       var t=0;
       var tt=new Array();
@@ -1200,14 +1222,14 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
   console.log(t);
 
   if(t==1)
-  x="just for laughs gags 2018";
+  x="just for laughs gags 2018 in english";
   else if(t==2)
-  x="charlie chaplin cartoon series";
+  x="charlie chaplin cartoon series in english";
   else
   x="mr bean videos in english";
   var merchant="";
   
-  var video_url="https://aws-analyser.herokuapp.com/users/youtube/"+x;
+  var video_url="http://localhost:3000/users/youtube/"+x;
   var video_area="";
   
     var xhttp11 = new XMLHttpRequest();
@@ -1226,7 +1248,7 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
             title=res.videos[i].title;
             desc=res.videos[i].description; 
             image=res.videos[i].preview;
-			
+  
             link="https://"+res.videos[i].link;
             if(desc.length > 80)
             desc=desc.substr(0,80);
@@ -1322,14 +1344,14 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
   var t=Math.floor(Math.random() * (3-1 + 1) + 1);
   console.log(t);
   if(t==1)
-  x="bollywood romantic songs";
+  x="romantic songs in english";
   else if(t==2)
-  x="bollywood sufian songs";
+  x="Whitney Houston english songs";
   else
-  x="arjit songs songs 2018";
+  x="bryan adams english songs";
   
   
-  var song_url="https://aws-analyser.herokuapp.com/users/youtube/"+x;
+  var song_url="http://localhost:3000/users/youtube/"+x;
   var song_area="";
   
     var xhttp = new XMLHttpRequest();
@@ -1394,9 +1416,9 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
   console.log("places:"+lati+" "+longi);
   var location = lati+","+longi;
   
-  var food_url="https://aws-analyser.herokuapp.com/users/n/food/"+lati+"/"+longi;
-  var places_url="https://aws-analyser.herokuapp.com/users/n/natural/feature/"+lati+"/"+longi;
-  var worship_url="https://aws-analyser.herokuapp.com/users/n/place/of/worship/"+lati+"/"+longi;
+  var food_url="http://localhost:3000/users/n/food/"+lati+"/"+longi;
+  var places_url="http://localhost:3000/users/n/natural/feature/"+lati+"/"+longi;
+  var worship_url="http://localhost:3000/users/n/place/of/worship/"+lati+"/"+longi;
   
   var f_name=new Array();var f_pos=new Array();var n_name=new Array();var n_pos=new Array();var w_name=new Array();var w_pos=new Array();
   var places="";
@@ -1409,8 +1431,8 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
     xhttp99.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200)                           
         {
-		
-			console.log("Inside first-------------");
+  
+  console.log("Inside first-------------");
             var response = xhttp99.responseText;
             var res=JSON.parse(response);
             //console.log("Food--->"+JSON.stringify(res));
@@ -1431,7 +1453,7 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
                     var response = xhttp98.responseText;
                     var res=JSON.parse(response);
                     //console.log("Nature--->"+JSON.stringify(res));
-					console.log("Inside second-------------");
+  console.log("Inside second-------------");
                     
                     for(var i=0;i<res.Natural_Places.length;i++)
                     {
@@ -1449,7 +1471,7 @@ Above pie-chart shows emotions expressed through pictures shared on instagram.
                           var response = xhttp97.responseText;
                           var res=JSON.parse(response);
                           //console.log("Temples--->"+JSON.stringify(res));
-						  console.log("Inside third--------------------------");
+    console.log("Inside third--------------------------");
                           
                           console.log("------------------------");
                           for(var i=0;i<res.Temples.length;i++)

@@ -42,7 +42,7 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 
 # Architecture of solution implemented
 <br>
-
+![aws-rec-DB3](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-archi1.png)<br>
 
 # Technology Stack used 
 

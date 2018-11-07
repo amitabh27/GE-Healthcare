@@ -19,7 +19,7 @@ var key = "AIzaSyCweXwBZ82TU1ZdOCFoDFYhx9l75vh6E50";
 
 var port = process.env.PORT || 5000;
 AWS.config.region = 'us-east-1';
-AWS.config.credentials = new AWS.Credentials("AKIAJD57FJUNJYXIZDOQ", "qqL9+JZA7HEwjrrP7cQ3nunMo/kAshd7scBuBjnk");
+AWS.config.credentials = new AWS.Credentials("..Key..", "..Key..");
 
 app.get("/", function(req, res) {
     res.status(200).send("Welcome to SHADE's RESTFUL Server");

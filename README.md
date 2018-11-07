@@ -216,7 +216,13 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 
 ![aws-rec-DB1](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec1.png)<br>
 ![aws-rec-DB2](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec2.png)<br>
+
+<h6>Block Diagram of LDA Model</h6>
+
 ![aws-rec-DB3](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec3.png)<br>
+
+<h6>Block Diagram of TF-IDF Model</h6>
+
 ![aws-rec-DB4](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-rec4.png)<br>
 
     

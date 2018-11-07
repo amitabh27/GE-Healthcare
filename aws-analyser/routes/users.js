@@ -82,19 +82,22 @@ app.get("/youtube/:search", function(req, ress) {
 
 });
 
-app.get('/n/food/:location', function(req, res) {
+app.get('/n/food/:lati/:longi', function(req, res) {
     var type = "food";
-    var location = req.params.location;
+    //var location = req.params.location;
     //var key=req.params.key;
     var result = "";
-
+    var lati = req.params.lati;
+    var longi = req.params.longi;
+    console.log("food");
     function second() {
         //return res.status(200).send('{ \"data\":{\"type":\"text\",\"text\":\"'+result+'\"}}');
         return res.status(200).send(result);
     }
 
     function first(callback) {
-        request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + location + '+city+food&language=en&key=' + key, function(error, response, body) {
+        //request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + location + '+city+food&language=en&key=' + key, function(error, response, body) {
+        request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=food&location='+ lati +','+ longi + '+&radius=10000&key=' + key, function(error, response, body) {
             if (!error && response.statusCode == 200) {
                 var o = JSON.parse(body);
                 //console.log(body);
@@ -125,7 +128,7 @@ app.get('/n/food/:location', function(req, res) {
                 callback(second);
             } else {
                 console.log("error..");
-                return err;
+                return error;
             }
         });
     }
@@ -136,10 +139,12 @@ app.get('/n/food/:location', function(req, res) {
 
 
 //nearby-nature-------------------------------------------------------------------------------------------
-app.get('/n/natural/feature/:location', function(req, res) {
+app.get('/n/natural/feature/:lati/:longi', function(req, res) {
     var type = "natural+feature";
-    var location = req.params.location;
+    //var location = req.params.location;
     //var key=req.params.key;
+    var lati = req.params.lati;
+    var longi = req.params.longi;
     var result = "";
 
     function second() {
@@ -148,7 +153,8 @@ app.get('/n/natural/feature/:location', function(req, res) {
     }
 
     function first(callback) {
-        request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + location + '+city+natural+feature&language=en&key=' + key, function(error, response, body) {
+        //request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + location + '+city+natural+feature&language=en&key=' + key, function(error, response, body) {
+        request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=natural places&location='+ lati +','+ longi + '+&radius=10000&key=' + key, function(error, response, body) {
             if (!error && response.statusCode == 200) {
                 var o = JSON.parse(body);
                 //console.log(body);
@@ -187,10 +193,12 @@ app.get('/n/natural/feature/:location', function(req, res) {
 
 
 //nearby-worship--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-app.get('/n/place/of/worship/:location', function(req, res) {
+app.get('/n/place/of/worship/:lati/:longi', function(req, res) {
     var type = "place+of+worship";
-    var location = req.params.location;
+    //var location = req.params.location;
     //var key=req.params.key;
+    var lati = req.params.lati;
+    var longi = req.params.longi;
     var result = "";
 
 
@@ -201,7 +209,8 @@ app.get('/n/place/of/worship/:location', function(req, res) {
     }
 
     function first(callback) {
-        request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + location + '+city+place+of+worship&language=en&key=' + key, function(error, response, body) {
+        //request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + location + '+city+place+of+worship&language=en&key=' + key, function(error, response, body) {
+        request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=temples&location='+ lati +','+ longi + '+&radius=10000&key=' + key, function(error, response, body) {
             if (!error && response.statusCode == 200) {
                 var o = JSON.parse(body);
                 //console.log(body);
@@ -237,7 +246,6 @@ app.get('/n/place/of/worship/:location', function(req, res) {
     }
     first(second);
 });
-
 
 app.get("/date/", function(req, res){ 
     var dt = dateTime.create();
@@ -314,6 +322,7 @@ app.get("/rekognition", function(req, res){
             });
         });
 });
+
 
 
 app.get("/transcribe/:t", function(req, res){

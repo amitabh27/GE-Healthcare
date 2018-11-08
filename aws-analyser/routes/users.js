@@ -1578,6 +1578,7 @@ function second(callback)
 function first(callback)
 {
     //console.log("********* Calling First ************");
+	var unique_tweets={};
     nlumap["executed"] = 0;
     var name = new Array();
     var size = new Array();

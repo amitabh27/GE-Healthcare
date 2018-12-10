@@ -39,10 +39,12 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
   
 </ul>
 
-# Architecture of solution implemented
+# Architecture of 1-SHADE Software and 2- SHADE Dashboard (WebApp) with it's Flow Diagram
 
+![aws-rec-DB5](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/aws-archi3.png)<br>
 ![aws-rec-DB3](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-archi1.png)<br><br><hr>
 ![aws-rec-DB4](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/aws-archi2.png)<br>
+
 
 # Technology Stack used 
 

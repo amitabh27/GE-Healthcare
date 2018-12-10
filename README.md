@@ -23,7 +23,10 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 <li><b>Alexa Skill </b>: Apart from web app, we have an Alexa Skill with same functionality which gives voice response as well as recommendations on alea app.
 <li><b>Chatbot for CBT(Cognitive Behavioral Test)</b> : Chatbot powered by AI Services that improves over time as the patient interacts with it. It performs the role of expert in CBT Tests thus implanting positive thoughts in patient's mind.
 </ul>
-# Proposed Solution
+<br>
+
+
+<h2>Proposed Solution</h2><hr>
 
 <ul>
   <li>The social media websites that we are targeting to understand user's current emotions are :</li>

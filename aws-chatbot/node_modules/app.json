@@ -1,0 +1,8 @@
+{
+"name" : "packup",
+"description":"chatbot",
+"repository":"https://github.com/amitabh27/packup",
+"logo":"https://scontent-bom1-1.xx.fbcdn.net/v/t1.0-9/22728715_145257572873835_745528201339242023_n.jpg?oh=451a9f4a3c48c3c81c67794e8e076a64&oe=5A7E798E",
+"keywords":["node","express"],
+"image":"heroku/nodejs"
+}

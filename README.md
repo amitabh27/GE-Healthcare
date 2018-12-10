@@ -280,18 +280,22 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 </ul>
 
 <h6>SHADE Dashboard</h6><br>
+
 ![aws-rec-DB1](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/ui1.png)<br>
 ![aws-rec-DB1](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/ui2.png)<br>
 ![aws-rec-DB1](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/ui3.png)<br>
 ![aws-rec-DB1](https://github.com/amitabh27/AI-AWS-CHALLENGE/blob/master/gitRepoMetadata/ui4.png)<br>
 
 <h6>SMS Service</h6><br>
+
 ![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/sms.png)<br>
 
 <h6>Product Aggregator Service</h6><br>
+
 ![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/product.png)<br>
 
 <h6>Nearby Psychiatrist</h6><br>
+
 ![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/psychiatrist.png)<br>
 
 <h6>Alexa Service</h6><br>

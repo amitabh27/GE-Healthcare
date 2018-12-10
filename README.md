@@ -299,9 +299,12 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 ![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/psychiatrist.png)<br>
 
 <h6>Alexa Service</h6><br>
-![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/alexa1.png)<br>
-![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/alexa2.png)<br
+
+![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/alexa.png)<br>
+
 
 <h6>Chatbot Service</h6><br>
+
 ![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/chat1.png)<br>
+
 ![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/chat2.png)

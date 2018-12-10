@@ -305,6 +305,5 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 
 <h6>Chatbot Service</h6><br>
 
-![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/chat1.png)<br>
+![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/chatbot.gif)<br>
 
-![aws-rec-DB1](https://github.com/amitabh27/GE-Healthcare/blob/master/gitRepoMetadata/chat2.png)

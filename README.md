@@ -26,7 +26,7 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 <br>
 
 
-<h2>Proposed Solution</h2><hr>
+<h2>Proposed Solution</h2>
 
 <ul>
   <li>The social media websites that we are targeting to understand user's current emotions are :</li>

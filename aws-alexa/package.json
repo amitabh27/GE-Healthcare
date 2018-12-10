@@ -1,0 +1,38 @@
+{
+  "name": "SHADEEngine",
+  "version": "1.0.0",
+  "description": "Social Media Sentiment Analysis",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Amitabh Tiwari",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/vision": "^0.22.1",
+    "alexa-sdk": "^1.0.25",
+    "algorithmia": "^0.3.10",
+    "async": "^2.6.1",
+    "aws-sdk": "^2.344.0",
+    "base-64": "^0.1.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-handlebars": "*",
+    "express-validator": "*",
+    "file-base64": "^1.0.0",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "image-downloader": "^3.4.1",
+    "multer": "*",
+    "nexmo": "^2.4.0",
+    "node-datetime": "^2.1.2",
+    "nodemailer": "^4.7.0",
+    "nodemon": "^1.18.5",
+    "play-sound": "^1.1.2",
+    "request": "^2.88.0",
+    "stream": "0.0.2",
+    "watson-developer-cloud": "^3.12.0"
+  }
+}

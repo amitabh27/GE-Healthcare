@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SHADE Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <style>
+  .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
+  .icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
+    .page-header {
+    font-size: 20px;
+    color: #EAF0F1;
+}
+  #search{
+  border-style: ridge;
+  }
+
+#insert10{
+  margin: auto;
+  height: 50px;
+      width: auto;
+      color:#ffffff;
+      background-color: #000000;
+      display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+   .required{
+  color: #45CE30;
+  }
+
+  body{
+    font-family: 'Ubuntu', serif;
+    font-size: 14px;
+  }
+  
+  #header{
+  margin: auto;
+  height: 50px;
+      width: auto;
+      color:#ffffff;
+      background-color: #000000;
+      display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  </style>
+</head>
+<body bgcolor="#25CCF7">
+  <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+  <a href="analysis" class="w3-bar-item w3-button">Home</a>
+  <a href="product" class="w3-bar-item w3-button">Product Aggregator</a>
+  <a href="psychatrist" class="w3-bar-item w3-button">Psychatrist Search</a>
+</div>
+<div class="w3-teal">
+  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
+  <div class="w3-container">
+  </div>
+</div>
+<div id="header" class="container2"><br>
+      <h4 id="label" align="center">SHADE ENGINE</h4>      
+</div>
+<div class="container1">
+  <form action="#menu1" id="search" class="form-inline" onsubmit="check()">
+  <div class="form-group">
+  <label class="required" for="Twitter ID">Enter Product Name:</label>&nbsp;&nbsp;&nbsp;
+<input type="text" style="margin:5px;" class="form-control" placeholder="Product Name" id="iid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <!--<button type="submit"  class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Submit</button>-->
+  <button type="submit" style="margin:5px;" class="btn btn-primary">Submit</button>&nbsp;&nbsp;
+  </div>
+  </form>
+  </div><br><br>
+  <div id="insert2">
+  </div>
+  <div class="wrapper4">
+  <div id="insert10">
+  <h4 id="label" align="center">&#169; - Brogrammers - A SHADE Engine developed by Team Brogrammers</h4>
+  <!--<input type="text" size="50" value="&#169; - Brogrammers - A SHADE Engine developed by Team Brogrammers" readonly>-->
+  </div>
+</div><br>
+
+<script>
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+
+function check()
+{
+  var x = document.getElementById("iid").value;
+  var url="http://aws-analyser.herokuapp.com/users/customsearchengine/"+x;
+  var gen='';
+  
+    if (x == "" || x==null)
+    {
+      
+    }
+    else
+    {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200)
+        {
+          var response = xhttp.responseText;
+          var res=JSON.parse(response);
+          var title,desc,image,merchant,link;
+          
+          for(var i=0;i<res.length;i++)
+          {
+            title=res[i].title;
+            desc=res[i].description;
+            image=res[i].image;
+            link=res[i].link;
+            merchant=res[i].displaylink;
+            
+            
+            gen=gen.concat("<div class=\"media\"><div class=\"media-left media-top\"><img src=\""+image+"\" class=\"media-object\" style=\"width:120px\"></div><div class=\"media-body\"><h4 class=\"media-heading\">");
+            gen=gen.concat(title).concat("</h4><p>").concat(desc).concat("</p><p><button type=\"button\" class=\"btn btn-default btn-sm\"><span class=\"glyphicon glyphicon-tag\"></span>").concat(" ").concat(merchant).concat("</button></p></div></div>").concat("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target=\"_blank\" href=\"").concat(link).concat("\"><span class=\"glyphicon glyphicon-hand-right\">&nbsp;Buy</span></a><hr>");
+            
+            
+            if(i==res.length-1)
+            document.getElementById('insert2').innerHTML = gen;
+            
+          }
+          
+        }
+    };
+    xhttp.open("GET",url, true);
+    xhttp.send();
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SHADE Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <style>
+  .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
+  .icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
+    .page-header {
+    font-size: 20px;
+    color: #EAF0F1;
+}
+  #search{
+  border-style: ridge;
+  }
+
+.fa {
+    font-size: 15px;
+}
+
+.checked {
+    color: orange;
+}
+
+#insert10{
+  margin: auto;
+  height: 50px;
+      width: auto;
+      color:#ffffff;
+      background-color: #000000;
+      display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+   .required{
+  color: #45CE30;
+  }
+
+  body{
+    font-family: 'Ubuntu', serif;
+    font-size: 14px;
+  }
+  
+  #header{
+  margin: auto;
+  height: 50px;
+      width: auto;
+      color:#ffffff;
+      background-color: #000000;
+      display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  </style>
+</head>
+<body bgcolor="#25CCF7">
+  <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+  <a href="analysis" class="w3-bar-item w3-button">Home</a>
+  <a href="product" class="w3-bar-item w3-button">Product Aggregator</a>
+  <a href="psychatrist" class="w3-bar-item w3-button">Psychatrist Search</a>
+</div>
+<div class="w3-teal">
+  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
+  <div class="w3-container">
+  </div>
+</div>
+<div id="header" class="container2"><br>
+      <h4 id="label" align="center">SHADE ENGINE</h4>      
+</div><br>
+  <div id="insert2">
+  </div>
+  <div class="wrapper4">
+  <div id="insert10">
+  <h4 id="label" align="center">&#169; - Brogrammers - A SHADE Engine developed by Team Brogrammers</h4>
+  <!--<input type="text" size="50" value="&#169; - Brogrammers - A SHADE Engine developed by Team Brogrammers" readonly>-->
+  </div>
+</div><br>
+
+<script>
+  var lati = "";
+  var longi = "";
+  var doctorlat = new Array();
+  var doctorlong = new Array();
+  var doctorname = new Array();
+  var doctoropen = new Array();
+  var doctorrating = new Array();
+  var doctoraddress = new Array();
+  var gen = "";
+
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+
+$(document).ready(function(){  
+      console.log("getLocation");
+
+	  
+	  lati="12.9719934";
+	  longi="77.7245402";
+	  
+      if(navigator.geolocation)
+      {
+        navigator.geolocation.getCurrentPosition(function(position){
+          locflag = 1;
+        lati  = position.coords.latitude;
+        longi = position.coords.longitude;
+        console.log(lati+" "+longi+"\n");
+        
+		//insert here
+
+    });     
+  }
+  var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lati+","+longi+"&radius=15000&keyword=psychiatrist&key=AIzaSyCweXwBZ82TU1ZdOCFoDFYhx9l75vh6E50";
+        var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200)
+        {
+            var response = xhttp.responseText;
+            var res=JSON.parse(response);
+            console.log("Got Response");
+            for(var i=0;i<res.results.length;i++)
+            {
+                doctorlat[i] = res.results[i].geometry.location.lat;
+                doctorlong[i] = res.results[i].geometry.location.lng;
+                doctorname[i] = res.results[i].name;
+                if(res.results[i].opening_hours == undefined)
+                  doctoropen[i] = "Closed";
+                else
+                {
+                  if(res.results[i].opening_hours.open_now)
+                    doctoropen[i] = "Opened";
+                  else
+                    doctoropen[i] = "Closed";
+                }
+                doctorrating[i] = res.results[i].rating;
+                doctoraddress[i] = res.results[i].vicinity;
+            }
+
+            for(var i=0;i<res.results.length;i++)
+            {
+              var link = "https://www.google.co.in/maps/dir/"+lati+","+longi+"/"+doctoraddress[i];
+              var rat = doctorrating[i];
+              gen=gen.concat("<div class=\"media\"><div class=\"media-left media-top\"></div><div class=\"media-body\"><h4 class=\"media-heading\">");
+              gen=gen.concat(doctorname[i]).concat("</h4><p>").concat("Address: ").concat(doctoraddress[i]).concat("</p><p><button type=\"button\" class=\"btn btn-default btn-sm\"><span class=\"glyphicon glyphicon-tag\"></span>").concat(" ").concat(doctoropen[i]).concat("</button></p></div></div>").concat("&nbsp;&nbsp; Directions &nbsp;&nbsp;<a target=\"_blank\" href=\"").concat(link).concat("\"><span class=\"glyphicon glyphicon-hand-right\">&nbsp;</span></a>&nbsp;&nbsp;").concat("Rating : "); 
+
+              for(var j=0;j<rat;j++)
+              {
+                gen = gen.concat("<span class=\"fa fa-star checked\"></span>");
+              }
+              for(j=1;j<5-rat;j++)
+              {
+                gen = gen.concat("<span class=\"fa fa-star\"></span>");
+              }
+            
+             gen = gen.concat("<hr>");
+            if(i==res.results.length-1)
+            document.getElementById('insert2').innerHTML = gen;
+            }
+      }
+    };
+      xhttp.open("GET",url, true);
+      xhttp.send();
+  
+  
+  
+});
+</script>
+</body>
+</html>

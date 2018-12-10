@@ -7,22 +7,22 @@ Help me with my Mood with Social-media Health Analysis and Display Engine (SHADE
 
 
 # Key Value Proposition 
-1) Data is fetched not only from Twitter but also from Medium.com and Instagram.
-2) Emotion detection is applied on photos shared on Instagram and twitter apart from text.
-3) Derive personality insights apart from blogs written on medium website.
-4) Graphical representation of data using Google Charts (Bar Graph, Donut Pie-chart, 3D chart etc)
-5) Recommendation engine for providing tips from doctors and psychiatrist based upon emotion detected.
-6) Use of AWS-Translate module to translate all tweets to English so that other AWS services can use it effectively.
-7) Based on emotion detected, various yoga positions have been displayed.
-8) If user is sad or feeling disgusted, it is very dangerous to leave him alone. So we have shown nearby worship places, restaurants and natural places using Google Nearby APIs so that he will come out of room and explore places and will not be alone in public places.
-9) To show the nearby places, application uses the current location of the user.<br>
-10)SMS Service : If Sadness in aggregated crosses 60% then SMS is sent to user's emergency number.<br>
-11)Medicine Aggregator : Given a medicine name, links of different e-commerce websites where the product is available for sale.<br>
-12)Nearby Psychiatrists : Using Location service from Browser, getting nearby psychiatrist clinics<br>
-13)Alexa Skill : Apart from web app, we have an Alexa Skill with same functionality which gives voice response as well as recommendations on alea app.<br>
-14)Chatbot for CBT(Cognitive Behavioral Test) : Chatbot powered by AI Services that improves over time as the patient interacts with it. It performs the role of expert in CBT Tests thus implanting positive thoughts in patient's mind.<br>
-
-
+<ul>
+<li>Data is fetched not only from Twitter but also from Medium.com and Instagram.
+<li>Emotion detection is applied on photos shared on Instagram and twitter apart from text.
+<li>Derive personality insights apart from blogs written on medium website.
+<li>Graphical representation of data using Google Charts (Bar Graph, Donut Pie-chart, 3D chart etc)
+<li>Recommendation engine for providing tips from doctors and psychiatrist based upon emotion detected.
+<li>Use of AWS-Translate module to translate all tweets to English so that other AWS services can use it effectively.
+<li>Based on emotion detected, various yoga positions have been displayed.
+<li>If user is sad or feeling disgusted, it is very dangerous to leave him alone. So we have shown nearby worship places, restaurants and natural places using Google Nearby APIs so that he will come out of room and explore places and will not be alone in public places.
+<li>To show the nearby places, application uses the current location of the user.
+<li><b>SMS Service</b> : If Sadness in aggregated crosses 60% then SMS is sent to user's emergency number.
+<li><b>Medicine Aggregator</b> : Given a medicine name, links of different e-commerce websites where the product is available for sale.<br>
+<li><b>Nearby Psychiatrists</b> : Using Location service from Browser, getting nearby psychiatrist clinics
+<li><b>Alexa Skill </b>: Apart from web app, we have an Alexa Skill with same functionality which gives voice response as well as recommendations on alea app.
+<li><b>Chatbot for CBT(Cognitive Behavioral Test)</b> : Chatbot powered by AI Services that improves over time as the patient interacts with it. It performs the role of expert in CBT Tests thus implanting positive thoughts in patient's mind.
+</ul>
 # Proposed Solution
 
 <ul>

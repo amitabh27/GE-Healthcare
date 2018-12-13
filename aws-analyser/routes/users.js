@@ -14,23 +14,176 @@ const stream = require('stream');
 var player = require('play-sound')({player: "./vlc.exe"});
 var base64 = require('file-base64');
 var dateTime = require('node-datetime');
-var key = "AIzaSyCweXwBZ82TU1ZdOCFoDFYhx9l75vh6E50";
+const Nexmo = require('nexmo');
+var key = "..";
 
 
 var port = process.env.PORT || 5000;
 AWS.config.region = 'us-east-1';
-AWS.config.credentials = new AWS.Credentials("..Key..", "..Key..");
+AWS.config.credentials = new AWS.Credentials("..", "..");
 
 app.get("/", function(req, res) {
     res.status(200).send("Welcome to SHADE's RESTFUL Server");
 });
 
 app.get("/analysis", (req, res) => {
-    res.render('login');
+    console.log("Views");
+    res.render('home');
 });
 
+app.get("/product", (req, res) => {
+    console.log("Views");
+    res.render('product');
+});
 
+app.get("/psychatrist", (req, res) => {
+    console.log("Views");
+    res.render('psychatrist');
+});
 
+app.get('/customsearchengine/:query',function(req,res){
+    
+
+    
+    var query=req.params.query;
+    
+    var result="";
+    
+    function second()
+    {
+        return res.status(200).send(JSON.parse(result));
+    }
+    
+    function first(callback)
+    {
+        
+        var str,find;
+        
+        request('https://www.googleapis.com/customsearch/v1?key=AIzaSyCweXwBZ82TU1ZdOCFoDFYhx9l75vh6E50&cx=007770797307440713814:8ki6p56szfc&q='+'buy anti depressant '+query+' online', function (error, response, body) {
+            if (!error && response.statusCode == 200) 
+            {
+            var o=JSON.parse(body);
+            result=result.concat("[");
+            
+            for(var i=0;i<o.items.length;i++)
+            {
+                    result=result.concat("{");
+                    
+                    str=o.items[i].title
+                    find = '\n';
+                    var re = new RegExp(find, 'g');
+                    str = str.replace(re, '');
+                    result=result.concat("\"title\":\"").concat(str).concat("\",");
+                    
+                    result=result.concat("\"link\":\"").concat(o.items[i].link).concat("\",");
+                    result=result.concat("\"displaylink\":\"").concat(o.items[i].displayLink).concat("\",");
+                    
+                    str=o.items[i].snippet;
+                    find = '\n';
+                    var re = new RegExp(find, 'g');
+                    str = str.replace(re, '');
+                    result=result.concat("\"description\":\"").concat(str).concat("\",");
+                    
+                    if(o.items[i].pagemap.cse_thumbnail == null)
+                    result=result.concat("\"image\":\"").concat("https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg").concat("\"");
+                    else
+                    result=result.concat("\"image\":\"").concat(o.items[i].pagemap.cse_thumbnail[0].src).concat("\"");
+                
+                
+            
+                    
+                    result=result.concat("}");
+                    if(i<=o.items.length-2)
+                    result=result.concat(",");
+                
+                
+            }
+            
+            result=result.concat("]");
+                
+            callback(second);
+            }
+        });
+        
+        
+    }
+    
+    
+    
+    
+    first(second);
+    
+
+});
+
+app.get("/datereturn", function(req, res){
+    var dt = dateTime.create();
+    var formatted = dt.format('Y-m-d H:M:S');
+    console.log("*********** FORMATTED ******* "+formatted);
+    formatted = formatted.substr(0,formatted.indexOf(" "));
+    res.status(200).send("[\""+formatted+"\"]");
+});
+
+app.get("/insertuser/:tid/:mid/:iid/:mobile", function(req, res){
+    var result = "";
+    result = result.concat("{");
+    result = result.concat("\"twitterid\":\"").concat(req.params.tid).concat("\",");
+    result = result.concat("\"mediumid\":\"").concat(req.params.mid).concat("\",");
+    result = result.concat("\"instagramid\":\"").concat(req.params.iid).concat("\",");
+    result = result.concat("\"mobile\":\"").concat(req.params.mobile).concat("\"");
+    result = result.concat("}");
+    result = JSON.parse(result);
+    request.post('https://api.mlab.com/api/1/databases/awsai/collections/users?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', {
+                json: result
+                },
+                function(error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                        console.log("----->" + body);
+                    } else
+                        console.log("-----XXXXX>" + error);
+                    }
+                );  
+});
+
+app.get("/check/:tid/:mid/:iid", function(req, res){
+    var flag = false;
+    var result = "";
+
+    function second()
+    {
+        result = "{ \"flag\":";
+        result += flag;
+        result = result.concat("}");
+        res.status(200).send(JSON.parse(result));
+    }
+
+    function first(callback)
+    {
+        request("https://api.mlab.com/api/1/databases/awsai/collections/users?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
+
+            if (!error && response.statusCode == 200)
+            {
+                var o = JSON.parse(body);
+                for (var i = 0; i < o.length; i++)
+                {
+                    var t = req.params.tid;
+                    var m = req.params.mid;
+                    var x = req.params.iid;
+                    if(t == o[i].twitterid && m == o[i].mediumid && x == o[i].instagramid)
+                    {
+                        flag = true;
+                        break;
+                    }
+
+                }
+                callback(second);
+            }
+            else
+                console.log(error);
+        });
+    }
+   first(second);
+});
 
 app.get("/youtube/:search", function(req, ress) {
 
@@ -70,7 +223,7 @@ app.get("/youtube/:search", function(req, ress) {
 
                 }
                 result = result.concat("]}");
-                console.log(result);
+                //console.log(result);
                 callback(second);
 
             } else
@@ -381,7 +534,7 @@ var params = {
   TargetLanguageCode: 'en'
 };
 translate.translateText(params, function (err, data) {
-  //console.log(data.TranslatedText);
+  console.log(data.TranslatedText);
 });
 });
 
@@ -565,7 +718,7 @@ app.get("/readProfile/:tid/:mid/:iid", function(req, res) {
     var map = {};
     var firstt = {};
     var nlumap = {};
-
+    var unique_tweets = {};
     var ordercount = 0;
     var count = 0;
     var count1 = 0;
@@ -716,7 +869,7 @@ function detectEntities()
         strtweet = strtweet + "  .  " +modified_tweets[x]; 
     }
     test[0]=strtweet;
-    //console.log("****** All Tweets:"+test[0]);
+    console.log("****** All Tweets:"+test[0]);
 
     async.each(test, function(apiRequest, cb) {
         apicall(apiRequest, cb);
@@ -825,7 +978,7 @@ function detectKeyPhrases()
         strtweet1 = strtweet1 + "  .  " +modified_tweets[x]; 
     }
     test[0]=strtweet1;
-    //console.log("****** All Tweets:"+test[0]);
+    console.log("****** All Keyphrases Tweets:"+test[0]);
 
     async.each(test, function(apiRequest, cb) {
         apicall(apiRequest, cb);
@@ -889,7 +1042,8 @@ function detectKeyPhrases()
         result = result.concat("}");
 
         ////console.log("*****Text2" + text_entity);
-            
+                console.log("Key Phrases: "+result+"\n");
+                console.log("Substring: "+result.substring(460,480));
                 result = JSON.parse(result);
                 request.post('https://api.mlab.com/api/1/databases/awsai/collections/keyphrases?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', {
                         json: result
@@ -911,7 +1065,8 @@ function toneAnalysis()
     var text = new Array();
     var labels = new Array();
     var celebrity = "";
-
+    
+    console.log("********* Modified Tweets Print **************** "+modified_tweets);
     function one(callback)
     {
         async.each(tweet_images, function(apiRequest, cb) {
@@ -1098,7 +1253,7 @@ function toneAnalysis()
                 map[newtweets[x]] = x;
             }
 
-            //console.log("New Length: " + newtweets.length + "\n");
+            console.log("New Tweets: " + newtweets + "\n");
             async.each(newtweets, function(apiRequest, cb) {
                 apicall(apiRequest, cb);
             }, function(err) {
@@ -1128,26 +1283,34 @@ function toneAnalysis()
                     };
 
                     toneAnalyzer.tone(toneParams, function(error, toneAnalysis) {
-                        order[ordercount++] = map[item];
-                        tone_size[ts++] = toneAnalysis.document_tone.tones.length;
+						
+						if(JSON.stringify(toneAnalysis)=="null")
+						{
+						console.log("empty................");	
+						}
+						else
+						{
+								order[ordercount++] = map[item];
+								tone_size[ts++] = toneAnalysis.document_tone.tones.length;
 
-                        //console.log("*****************************************" + "\n");
-                        //console.log(item + "\n");
-                        for (var k = 0; k < tone_size[ts - 1]; k++)
-                        {
-                            names[count1++] = toneAnalysis.document_tone.tones[k].tone_name;
-                            scores[count2++] = toneAnalysis.document_tone.tones[k].score;
-                            //console.log(toneAnalysis.document_tone.tones[k].tone_name + "\n" + toneAnalysis.document_tone.tones[k].score + "\n");
-                        }
+								//console.log("*****************************************" + "\n");
+								//console.log(item + "\n");
+								for (var k = 0; k < tone_size[ts - 1]; k++)
+								{
+									names[count1++] = toneAnalysis.document_tone.tones[k].tone_name;
+									scores[count2++] = toneAnalysis.document_tone.tones[k].score;
+									//console.log(toneAnalysis.document_tone.tones[k].tone_name + "\n" + toneAnalysis.document_tone.tones[k].score + "\n");
+								}
 
-                        if (toneAnalysis.document_tone.tones.length == 0)
-                        {
-                            tone_size[ts - 1] = 1;
-                            names[count1++] = "Neutral";
-                            scores[count2++] = "0.1";
-                        }
+								if (toneAnalysis.document_tone.tones.length == 0)
+								{
+									tone_size[ts - 1] = 1;
+									names[count1++] = "Neutral";
+									scores[count2++] = "0.1";
+								}
 
-                        //console.log("*****************************************" + "\n");
+								//console.log("*****************************************" + "\n");
+						}
                             cb();
                         });
                     } else
@@ -1156,7 +1319,7 @@ function toneAnalysis()
 
                 function process_arrays()
                 {
-                    console.log("Post:");
+                    console.log("Post: "+dd);
                     var result = "";
                     result = result.concat("{");
                     result = result.concat("\"twitterid\":\"").concat(req.params.tid).concat("\",");
@@ -1164,7 +1327,7 @@ function toneAnalysis()
                     result = result.concat("\"instagramid\":\"").concat(req.params.iid).concat("\",");
                     result = result.concat("\"celebrity\":\"").concat(celebrity).concat("\",");
                     result = result.concat("\"date\":\"").concat(dd).concat("\",");
-
+    
                     var temp_tt = "";
                     for (var i = 0; i < (newtweets.length - 1); i++)
                     {
@@ -1191,6 +1354,8 @@ function toneAnalysis()
 
                     var tttt = 0;
                     result = result.concat("\"tweets\":[");
+                    var c1 = 0;
+                    var c2 = 0;
                     for (var j = 0; j < newtweets.length; j++)
                     {
                         result = result.concat("{");
@@ -1201,12 +1366,17 @@ function toneAnalysis()
 
                         //insert tone analyser details for each tweet here
                         result = result.concat("\"tone_analyser\":[");
-
+                        //c2 = c2 + tone_size[j];
                         for (var k = 0; k < tone_size[j]; k++)
                         {
+                            c2++;
                             result = result.concat("{");
 
                             result = result.concat("\"name\":\"").concat(names[tttt]).concat("\",");
+                            if(names[tttt] == "Joy" || names[tttt] == "joy" || names[tttt] == "Happy" || names[tttt] == "happy")
+                                console.log("Happy");
+                            else
+                                c1++;
                             result = result.concat("\"score\":\"").concat(scores[tttt++]).concat("\"");
 
                             result = result.concat("}");
@@ -1224,7 +1394,9 @@ function toneAnalysis()
                     result = result.concat("]}");
                     //console.log(result);
                     //console.log("***** id : " + id);
-
+                    console.log("\n\n"+"----->" + "Success ------------------------------> "+"c1: "+c1+" c2: "+c2+"\n");
+                    if(c1/c2 >= 0.5)
+                           sendsms();
                         console.log("*********************************************"+result);
                         //result = result.replace(/"/g, "").replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
                         //if(result.indexOf("alexa") != -1)
@@ -1238,7 +1410,7 @@ function toneAnalysis()
                             },
                             function(error, response, body) {
                                 if (!error && response.statusCode == 200) {
-                                    console.log("----->" + "Success");
+                                    res.status(200).send("[\"analyser successful\"]");
                                 } 
                                 else{
                                     console.log("-----XXXXX>" + error+"\n");
@@ -1255,6 +1427,37 @@ function toneAnalysis()
                 
             }
         }
+
+        function sendsms()
+        {
+            request("https://api.mlab.com/api/1/databases/awsai/collections/users?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
+
+                if (!error && response.statusCode == 200)
+                {
+                    var o = JSON.parse(body);
+                
+                    for(var z=0;z<o.length;z++)
+                    {
+                        if(o[z].twitterid == req.params.tid && o[z].mediumid == req.params.mid && o[z].instagramid == req.params.iid)
+                        {
+                            const nexmo = new Nexmo({
+                              apiKey: '',
+                              apiSecret: ''
+                            });
+                            
+                            const from = ''
+                            //const to = ''
+                            const to = "91"+o[z].mobile;
+                            //const text = "Your OTP for order confirmation is "+val+". Happy Shopping!";
+                            const text = "Your Friend with twitter handle @"+req.params.tid+" is not feeling that great - SHADE Engine";
+
+                            nexmo.message.sendSms(from, to, text);
+                        }
+                    }
+                }
+            });
+        }
+
         one(two);
 }
 
@@ -1486,7 +1689,7 @@ function instagramAnalysis()
                     function(error, response, body) {
                         if (!error && response.statusCode == 200) {
                             console.log("----->" + body);
-                            res.status(200).send("[\"analyser successful\"]");
+                            //res.status(200).send("[\"analyser successful\"]");
                         } else
                             console.log("-----XXXXX>" + error);
                     }
@@ -1501,13 +1704,17 @@ function instagramAnalysis()
 
 function fourth()
 {
+	
+	
     //await Promise.all([toneAnalysis(), detectEntities(),detectKeyPhrases(),personalityInsights(),instagramAnalysis()]);
     instagramAnalysis();
+    //setTimeout(toneAnalysis, 15000);
     toneAnalysis();
     detectEntities();
     detectKeyPhrases();
     personalityInsights();
 }
+
 
 function third()
 {
@@ -1519,7 +1726,7 @@ function third()
 function second(callback)
 {
     //console.log("!!!!!!!!! I am in second !!!!!!!!!!!   " + dup + "\n\n\n");
-
+    console.log("Before Translation =======: "+dup+"\n");
         async.each(dup, function(apiRequest, cb) {
             apicall(apiRequest, cb);
 
@@ -1569,8 +1776,8 @@ function second(callback)
         function process_arrays() {
             for (var x = 0; x < modified_tweets.length/2; x++) {
                 firstt[modified_tweets[x]] = 0;
-                ////console.log(modified_tweets[x]);
             }
+            console.log("After Translation =======: "+modified_tweets);
             callback(third);
         }
 }
@@ -1578,7 +1785,6 @@ function second(callback)
 function first(callback)
 {
     //console.log("********* Calling First ************");
-	var unique_tweets={};
     nlumap["executed"] = 0;
     var name = new Array();
     var size = new Array();
@@ -1588,8 +1794,10 @@ function first(callback)
     size[10] = 30;size[11] = 31;
     var dt = dateTime.create();
     var formatted = dt.format('Y-m-d H:M:S');
+    console.log("*********** FORMATTED ******* "+formatted);
     formatted = formatted.substr(0,formatted.indexOf(" "));
     dd = formatted;
+    console.log("*********** FORMATTED ******* "+formatted + "  ******** DD :"+dd);
     formatted = formatted.split("-");
     var month = name[formatted[1]-1];
     var day = formatted[2];
@@ -1651,13 +1859,14 @@ function first(callback)
                 for (var i = 0; i < o.length; i++)
                 {
                     var temp = o[i];
-
+                    console.log("Current Month = " + curmonth+" targetmonth "+targetmonth +"\n");
                     if (temp.twitterid == req.params.tid && temp.mediumid == req.params.mid && temp.instagramid == req.params.iid)
                     {
                         var tt = 0;
                         for (var j = 0; j < temp.tweets.length; j++)
                         {
                             dict[j] = 0;
+                            console.log("Tweet Date : "+temp.tweets[j].time);
                             var td = temp.tweets[j].time;
                             var tdm = td.split("-")[1];
                             var tdd = td.split("-")[2];
@@ -1667,32 +1876,42 @@ function first(callback)
                             if(tdd.charAt(0) == '0')
                                 tdd = tdd.substr(1,2);
 
-                            console.log("tdd = " + tdd+" tillday"+tillday+" day:"+day+"\n");
-                            console.log("Cur Month = " + curmonth+" targetmonth "+targetmonth +" tdm"+tdm+"\n");
+                            console.log("tdd = " + tdd+" tillday = "+tillday+"\n");
+                            
                             if((tdd >= tillday && targetmonth == curmonth) || ((targetmonth == curmonth - 1) && (tdd >= tillday || (tdd.length == 1 && tdm == curmonth ))))
                             {
-                                    console.log("tdd >= tillday && targetmonth == curmonth :" + (tdd >= tillday && targetmonth == curmonth));
-                                    console.log("tdd >= tillday : " + (tdd >= tillday));
-                                    console.log("tdd.length == 1 : " + (tdd.length == 1));
-                                    console.log("Entered *****"+temp.tweets[j].time);
-                
+                                    //console.log("tdd >= tillday && targetmonth == curmonth :" + (tdd >= tillday && targetmonth == curmonth));
+                                    //console.log("tdd >= tillday : " + (tdd >= tillday));
+                                    //console.log("tdd.length == 1 : " + (tdd.length == 1));
+                                    
 
                                     //if(curmonth == targetmonth && tdm != curmonth)
                                      //   continue;
 
                                     if(!(temp.tweets[tt].text in unique_tweets))
                                     {
-                                    unique_tweets[temp.tweets[tt].text]=1;
-                                    text[tt] = temp.tweets[tt].text;
-                                    lang[tt] = temp.tweets[tt].lang;
-                                    time[tt] = temp.tweets[tt].time;
-                                    tweet_images[tt] = temp.tweets[tt].image;
-                                    dup[tt] = temp.tweets[tt].text + "99999" + temp.tweets[tt].lang;
-                                    tt++;
+                                        console.log("Entered *****"+temp.tweets[j].time);
+                                        console.log("Tweet: "+temp.tweets[j].text);
+                                        unique_tweets[temp.tweets[tt].text]=1;
+                                        text[tt] = temp.tweets[tt].text;
+                                        lang[tt] = temp.tweets[tt].lang;
+                                        time[tt] = temp.tweets[tt].time;
+                                        tweet_images[tt] = temp.tweets[tt].image;
+                                        dup[tt] = temp.tweets[tt].text + "99999" + temp.tweets[tt].lang;
+                                        tt++;
+                                    }
+                                    else
+                                    {
+                                        console.log("****** discarding **** "+temp.tweets[j].text+"\n");
+                                        console.log("****** unique_tweets ********"+Object.keys(unique_tweets)+"\n");
                                     }
                             }
+                            else
+                                    console.log("Not Added: "+temp.tweets[j].text);
+
                         }
                         console.log(time+"*******"+text);
+                        console.log("after api call: ====="+dup+"\n");
 
                         for (var j = 0; j < temp.blogs.length; j++)
                         {
@@ -1700,13 +1919,19 @@ function first(callback)
                             blogstime[j] = temp.blogs[j].time;
                         }
 
-                        for (var j = 0; j < temp.posts.length; j++)
+                        var termination = temp.posts.length;
+                        console.log("&&&&&& termination : "+termination+"\n");
+                        if(termination > 2)
+                            termination = 2;
+                        for (var j = 0; j < termination; j++)
                         {
                             posts[j] = temp.posts[j].text;
                             url[j] = temp.posts[j].url;
                             likes[j] = temp.posts[j].likes;
                             vrmap[j] = 0;
                             vrmap2[j] = 0;
+							
+							
                         }
                         vrmap[j] = 0;
                         vrmap2[j] = 0;
@@ -1717,150 +1942,150 @@ function first(callback)
                     }
                 }
            
-				request("https://api.mlab.com/api/1/databases/awsai/collections/tweets?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
-				if (!error && response.statusCode == 200)
-				{
-					var o = JSON.parse(body);
-						for (var i = 0; i < o.length; i++)
-						{
-							var temp = o[i];
+    request("https://api.mlab.com/api/1/databases/awsai/collections/tweets?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
+    if (!error && response.statusCode == 200)
+    {
+    var o = JSON.parse(body);
+    for (var i = 0; i < o.length; i++)
+    {
+    var temp = o[i];
 
-							if (temp.twitterid == req.params.tid && temp.mediumid == req.params.mid && temp.instagramid == req.params.iid)
-							{
-								id = temp._id.$oid;
-								request.delete('https://api.mlab.com/api/1/databases/awsai/collections/tweets/' + id + '?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', function(error, response, body) {
-								if (!error && response.statusCode == 200) {
+    if (temp.twitterid == req.params.tid && temp.mediumid == req.params.mid && temp.instagramid == req.params.iid)
+    {
+    id = temp._id.$oid;
+    request.delete('https://api.mlab.com/api/1/databases/awsai/collections/tweets/' + id + '?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', function(error, response, body) {
+    if (!error && response.statusCode == 200) {
 
-								console.log("deleted...");
-								   
-								}
-								});
-								break;
-							}
-						}
-				}
+    console.log("deleted...");
+       
+    }
+    });
+    break;
+    }
+    }
+    }
 
-				});
+    });
 
-				request("https://api.mlab.com/api/1/databases/awsai/collections/entities?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
+    request("https://api.mlab.com/api/1/databases/awsai/collections/entities?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
 
-				if (!error && response.statusCode == 200)
-				{
-					var o = JSON.parse(body);
-						for (var i = 0; i < o.length; i++)
-						{
-							var temp = o[i];
+    if (!error && response.statusCode == 200)
+    {
+    var o = JSON.parse(body);
+    for (var i = 0; i < o.length; i++)
+    {
+    var temp = o[i];
 
-							if (temp.twitterid == req.params.tid && temp.mediumid == req.params.mid && temp.instagramid == req.params.iid)
-							{
-								id1 = temp._id.$oid;
-								
-									request.delete('https://api.mlab.com/api/1/databases/awsai/collections/entities/' + id1 + '?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', function(error, response, body) {
-									if (!error && response.statusCode == 200) {
+    if (temp.twitterid == req.params.tid && temp.mediumid == req.params.mid && temp.instagramid == req.params.iid)
+    {
+    id1 = temp._id.$oid;
+    
+    request.delete('https://api.mlab.com/api/1/databases/awsai/collections/entities/' + id1 + '?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', function(error, response, body) {
+    if (!error && response.statusCode == 200) {
 
-										console.log("deleted...");
-										
-									}
-									});
-								
-								
-								break;
-							}
-						}
-				}
-				else
-					console.log(error);
-			});      
+    console.log("deleted...");
+    
+    }
+    });
+    
+    
+    break;
+    }
+    }
+    }
+    else
+    console.log(error);
+    });      
 
-			request("https://api.mlab.com/api/1/databases/awsai/collections/personalityinsights?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
+    request("https://api.mlab.com/api/1/databases/awsai/collections/personalityinsights?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
 
-				if (!error && response.statusCode == 200)
-				{
-					var o = JSON.parse(body);
-						for (var i = 0; i < o.length; i++)
-						{
-							var temp = o[i];
+    if (!error && response.statusCode == 200)
+    {
+    var o = JSON.parse(body);
+    for (var i = 0; i < o.length; i++)
+    {
+    var temp = o[i];
 
-							if (temp.twitterid == req.params.tid && temp.mediumid == req.params.mid && temp.instagramid == req.params.iid)
-							{
-								id2 = temp._id.$oid;
-								
-								request.delete('https://api.mlab.com/api/1/databases/awsai/collections/personalityinsights/' + id2 + '?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', function(error, response, body) {
-									if (!error && response.statusCode == 200) {
+    if (temp.twitterid == req.params.tid && temp.mediumid == req.params.mid && temp.instagramid == req.params.iid)
+    {
+    id2 = temp._id.$oid;
+    
+    request.delete('https://api.mlab.com/api/1/databases/awsai/collections/personalityinsights/' + id2 + '?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', function(error, response, body) {
+    if (!error && response.statusCode == 200) {
 
-										console.log("deleted...");
-										
-									}
-								});
-								
-								break;
-							}
-						}
-				}
-				else
-					console.log(error);
-			});      
+    console.log("deleted...");
+    
+    }
+    });
+    
+    break;
+    }
+    }
+    }
+    else
+    console.log(error);
+    });      
 
-			request("https://api.mlab.com/api/1/databases/awsai/collections/keyphrases?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
+    request("https://api.mlab.com/api/1/databases/awsai/collections/keyphrases?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
 
-				if (!error && response.statusCode == 200)
-				{
-					var o = JSON.parse(body);
-						for (var i = 0; i < o.length; i++)
-						{
-							var temp = o[i];
+    if (!error && response.statusCode == 200)
+    {
+    var o = JSON.parse(body);
+    for (var i = 0; i < o.length; i++)
+    {
+    var temp = o[i];
 
-							if (temp.twitterid == req.params.tid && temp.mediumid == req.params.mid && temp.instagramid == req.params.iid)
-							{
-								id3 = temp._id.$oid;
-								
-								 request.delete('https://api.mlab.com/api/1/databases/awsai/collections/keyphrases/' + id3 + '?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', function(error, response, body) {
-									if (!error && response.statusCode == 200) {
+    if (temp.twitterid == req.params.tid && temp.mediumid == req.params.mid && temp.instagramid == req.params.iid)
+    {
+    id3 = temp._id.$oid;
+    
+     request.delete('https://api.mlab.com/api/1/databases/awsai/collections/keyphrases/' + id3 + '?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', function(error, response, body) {
+    if (!error && response.statusCode == 200) {
 
-										console.log("deleted...");
-										
-									}
-								});
-								break;
-							}
-						}
-				}
-				else
-					console.log(error);
-			});      
+    console.log("deleted...");
+    
+    }
+    });
+    break;
+    }
+    }
+    }
+    else
+    console.log(error);
+    });      
 
-			request("https://api.mlab.com/api/1/databases/awsai/collections/instagram_images?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
+    request("https://api.mlab.com/api/1/databases/awsai/collections/instagram_images?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK", function(error, response, body) {
 
-				if (!error && response.statusCode == 200)
-				{
-					var o = JSON.parse(body);
-						for (var i = 0; i < o.length; i++)
-						{
-							var temp = o[i];
+    if (!error && response.statusCode == 200)
+    {
+    var o = JSON.parse(body);
+    for (var i = 0; i < o.length; i++)
+    {
+    var temp = o[i];
 
-							if (temp.twitterid == req.params.tid && temp.mediumid == req.params.mid && temp.instagramid == req.params.iid)
-							{
-								id4 = temp._id.$oid;
-								
-								request.delete('https://api.mlab.com/api/1/databases/awsai/collections/instagram_images/' + id4 + '?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', function(error, response, body) {
-								if (!error && response.statusCode == 200) {
+    if (temp.twitterid == req.params.tid && temp.mediumid == req.params.mid && temp.instagramid == req.params.iid)
+    {
+    id4 = temp._id.$oid;
+    
+    request.delete('https://api.mlab.com/api/1/databases/awsai/collections/instagram_images/' + id4 + '?apiKey=mAVS03itlTctm2m3MlM1hKfxSd16lsFK', function(error, response, body) {
+    if (!error && response.statusCode == 200) {
 
-										console.log("deleted...");
-										
-									}
-								});
-								break;
-							}
-						}
-				}
-				else
-					console.log(error);
-			}); 
+    console.log("deleted...");
+    
+    }
+    });
+    break;
+    }
+    }
+    }
+    else
+    console.log(error);
+    }); 
                 
-			//all delete ids collected.	
-			callback(second);
+    //all delete ids collected. 
+    callback(second);
 
-			
+    
         }
           
     });

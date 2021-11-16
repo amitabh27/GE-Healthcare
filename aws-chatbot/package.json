@@ -13,7 +13,7 @@
     "@google-cloud/vision": "^0.22.1",
     "algorithmia": "^0.3.10",
     "async": "^2.6.1",
-    "aws-sdk": "^2.344.0",
+    "aws-sdk": "^2.814.0",
     "base-64": "^0.1.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",

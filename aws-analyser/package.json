@@ -12,7 +12,7 @@
   "dependencies": {
     "@google-cloud/vision": "^0.22.1",
     "algorithmia": "^0.3.10",
-    "async": "^2.6.1",
+    "async": "^2.6.4",
     "aws-sdk": "^2.344.0",
     "base-64": "^0.1.0",
     "body-parser": "^1.18.3",

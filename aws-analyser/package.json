@@ -16,7 +16,7 @@
     "aws-sdk": "^2.344.0",
     "base-64": "^0.1.0",
     "body-parser": "^1.18.3",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-handlebars": "*",
     "express-validator": "*",
     "file-base64": "^1.0.0",
